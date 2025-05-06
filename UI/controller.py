@@ -9,4 +9,22 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-        pass
+        anno = self._view._txtAnno.value
+        if anno == "":
+            self._view.create_alert("Non hai inserito niente!!!")
+        else:
+            try:
+                anno = int(anno)
+            except ValueError:
+                self._view.create_alert("Non hai inserito un numero!!!")
+            if 1815<anno<2017:
+
+                self._model.buildgraph(anno)
+                for c in self._model.getNodes():
+                    pass
+
+
+            else:
+                self._view.create_alert("Anno sbagliato!!!")
+        self._view.update_page()
+
